@@ -6,29 +6,38 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- EditText for Source Currency -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chuyển đổi tiền tệ"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp" />
+
+
     <EditText
         android:id="@+id/etSource"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint=""
+        android:hint="0"
+        android:textSize="36sp"
         android:inputType="numberDecimal" />
 
-    <!-- Spinner for Source Currency -->
     <Spinner
         android:id="@+id/spSourceCurrency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- EditText for Destination Currency -->
+
     <EditText
         android:id="@+id/etDestination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint=""
+        android:hint="0"
+        android:textSize="36sp"
         android:inputType="numberDecimal" />
 
-    <!-- Spinner for Destination Currency -->
     <Spinner
         android:id="@+id/spDestinationCurrency"
         android:layout_width="match_parent"

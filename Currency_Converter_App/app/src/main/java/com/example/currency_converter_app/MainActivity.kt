@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var spSourceCurrency: Spinner
     private lateinit var spDestinationCurrency: Spinner
 
-    private var isSourceEditing = true // Biến để xác định ô nào đang được chỉnh sửa
+    private var isSourceEditing = true
 
     // Tỉ giá hối đoái với VND bổ sung
     private val exchangeRates = mapOf(
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         "TRY" to 34.2500051828,
         "USD" to 1.0,
         "ZAR" to 17.7822634988,
-        "VND" to 24300.0 // Thêm tỉ giá đồng VND
+        "VND" to 24300.0
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         spSourceCurrency = findViewById(R.id.spSourceCurrency)
         spDestinationCurrency = findViewById(R.id.spDestinationCurrency)
 
-        // Create a list of currencies, including VND
         val currencies = exchangeRates.keys.toList()
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, currencies)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -74,13 +73,12 @@ class MainActivity : AppCompatActivity() {
         spSourceCurrency.adapter = adapter
         spDestinationCurrency.adapter = adapter
 
-        // Add TextWatcher to EditTexts to monitor changes
         etSource.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (isSourceEditing) {
                     if (s.isNullOrEmpty()) {
-                        etDestination.text.clear() // Xóa dữ liệu bên đích khi xóa hết số tiền nguồn
+                        etDestination.text.clear()
                     } else {
                         convertCurrency(true)
                     }
@@ -94,7 +92,7 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!isSourceEditing) {
                     if (s.isNullOrEmpty()) {
-                        etSource.text.clear() // Xóa dữ liệu bên nguồn khi xóa hết số tiền đích
+                        etSource.text.clear()
                     } else {
                         convertCurrency(false)
                     }
@@ -111,10 +109,9 @@ class MainActivity : AppCompatActivity() {
             isSourceEditing = !hasFocus
         }
 
-        // Add listener to Spinners to monitor changes in currency selection
         spSourceCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                if (isSourceEditing) convertCurrency(true)
+                convertCurrency(true) // Chuyển đổi lại khi thay đổi đồng tiền nguồn
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
@@ -122,14 +119,15 @@ class MainActivity : AppCompatActivity() {
 
         spDestinationCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                if (!isSourceEditing) convertCurrency(false)
+                if (!etDestination.text.isNullOrEmpty()) {
+                    convertDestinationCurrency()
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
     }
 
-    // Function to convert currency based on user input
     private fun convertCurrency(isSource: Boolean) {
         val sourceAmount: Double
         val sourceCurrency: String
@@ -148,7 +146,6 @@ class MainActivity : AppCompatActivity() {
         val sourceRate = exchangeRates[sourceCurrency] ?: 1.0
         val destinationRate = exchangeRates[destinationCurrency] ?: 1.0
 
-        // Convert from source to USD first, then to destination currency
         val amountInUSD = sourceAmount / sourceRate
         val convertedAmount = amountInUSD * destinationRate
 
@@ -157,5 +154,19 @@ class MainActivity : AppCompatActivity() {
         } else {
             etSource.setText(String.format("%.2f", convertedAmount))
         }
+    }
+
+    private fun convertDestinationCurrency() {
+        val destinationAmount = etDestination.text.toString().toDoubleOrNull() ?: return
+        val sourceCurrency = spSourceCurrency.selectedItem.toString()
+        val destinationCurrency = spDestinationCurrency.selectedItem.toString()
+
+        val sourceRate = exchangeRates[sourceCurrency] ?: 1.0
+        val destinationRate = exchangeRates[destinationCurrency] ?: 1.0
+
+        val amountInUSD = destinationAmount / destinationRate
+        val convertedAmount = amountInUSD * sourceRate
+
+        etSource.setText(String.format("%.2f", convertedAmount))
     }
 }

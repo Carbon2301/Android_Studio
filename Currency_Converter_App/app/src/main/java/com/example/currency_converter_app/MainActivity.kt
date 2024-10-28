@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
         spSourceCurrency.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                convertCurrency(true) // Chuyển đổi lại khi thay đổi đồng tiền nguồn
+                convertCurrency(true)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}

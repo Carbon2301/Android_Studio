@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private var isSourceEditing = true
 
-    // Tỉ giá hối đoái với VND bổ sung
+    // Tỉ giá hối đoái
     private val exchangeRates = mapOf(
         "AUD" to 1.5073102244,
         "BGN" to 1.8173203445,

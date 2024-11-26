@@ -9,7 +9,7 @@
 
 ## Screenshots
 <div>
-<img src="./Screenshots/anh1.jpg.jpg" title="Student Manager" width="300"/>
+<img src="./Screenshots/anh1.jpg" title="Student Manager" width="300"/>
 <img src="./Screenshots/anh2.jpg" title="Student Manager" width="300"/>
 <img src="./Screenshots/anh3.jpg" title="Student Manager" width="300"/>
 <img src="./Screenshots/anh4.jpg" title="Student Manager" width="300"/>

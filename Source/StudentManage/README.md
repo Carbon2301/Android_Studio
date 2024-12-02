@@ -8,10 +8,19 @@
 + Sau khi xóa sinh viên, hiển thị snackbar thông báo sinh viên vừa bị xóa, người dùng có thể nhấn Undo để khôi phục thông tin của sinh viên vừa bị xóa.
 
 ## Screenshots
+### Thêm sinh viên
 <div>
 <img src="./Screenshots/demo1.jpg" title="Student Manager" width="300"/>
 <img src="./Screenshots/demo2.jpg" title="Student Manager" width="300"/>
+</div>
+
+### Sửa thông tin sinh viên
+<div>
 <img src="./Screenshots/demo3.jpg" title="Student Manager" width="300"/>
 <img src="./Screenshots/demo4.jpg" title="Student Manager" width="300"/>
+</div>
+
+### Xóa sinh viên
+<div>
 <img src="./Screenshots/demo5.jpg" title="Student Manager" width="300"/>
 </div>

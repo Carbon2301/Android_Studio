@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Student Management App</string>
+    <string name="add_new">Add New</string>
+    <string name="student_name">Full name</string>
+    <string name="student_id">Student Id</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Delete</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
+    <string name="add_new_student">Add new student</string>
+    <string name="edit_information">Edit student information</string>
+    <string name="remove_student"> Delete student information </string>
+    <string name="remove_student_confirm"> Are you sure you want to delete this student information? </string>
+</resources>

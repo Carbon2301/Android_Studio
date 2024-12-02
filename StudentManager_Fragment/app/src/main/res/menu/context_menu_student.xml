@@ -1,0 +1,11 @@
+<!-- res/menu/context_menu_student.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_edit"
+        android:title="@string/edit"
+        android:icon="@drawable/baseline_edit_24" />
+    <item
+        android:id="@+id/menu_remove"
+        android:title="@string/remove"
+        android:icon="@drawable/baseline_delete_24" />
+</menu>

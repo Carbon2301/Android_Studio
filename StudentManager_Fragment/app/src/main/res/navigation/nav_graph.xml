@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    android:label="student_management"
+    app:startDestination="@id/listStudentFragment">
+
+    <fragment
+        android:id="@+id/listStudentFragment"
+        android:name="com.example.studentmanagement.controller.ListStudentFragment"
+        android:label="List Student"
+        android:layout="@layout/layout_fragment_list">
+    </fragment>
+
+    <!-- Add Student Fragment -->
+    <fragment
+        android:id="@+id/addStudentFragment"
+        android:name="com.example.studentmanagement.controller.AddStudentFragment"
+        android:label="Add Student"
+        android:layout="@layout/layout_add_student_fragment">
+        <!-- Action to navigate to Edit Student Fragment -->
+        <action
+            android:id="@+id/action_add_to_edit"
+            app:destination="@id/editStudentFragment" />
+    </fragment>
+
+    <!-- Edit Student Fragment -->
+    <fragment
+        android:id="@+id/editStudentFragment"
+        android:name="com.example.studentmanagement.controller.EditStudentFragment"
+        android:label="Edit Student"
+        android:layout="@layout/layout_fragment_edit">
+        <!-- Action to navigate to Remove Student Fragment -->
+        <argument
+            android:name="student"
+            app:argType="com.example.studentmanagement.model.Student" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+</navigation>

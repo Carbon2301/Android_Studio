@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/list_student_nav"
+        android:title="List Student" />
+    <item
+        android:id="@+id/add_student_nav"
+        android:title="Add Student" />
+    <item
+        android:id="@+id/edit_student_nav"
+        android:title="Edit Student" />
+</menu>
